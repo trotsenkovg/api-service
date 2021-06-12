@@ -9,9 +9,9 @@ class Lamoda extends LamodaServiceRequest
 
     public function __construct()
     {
-        $this->url      = env('LAMODA_API_URL');
-        $this->userID   = env('LAMODA_API_USER');
-        $this->password = env('LAMODA_API_PASSWORD');
+        $this->url  = env('LAMODA_API_URL');
+        $this->user = env('LAMODA_API_USER');
+        $this->key  = env('LAMODA_API_KEY');
     }
 
     /**php

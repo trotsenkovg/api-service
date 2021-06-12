@@ -12,7 +12,7 @@ class lamodaGetProduct extends Command
      *
      * @var string
      */
-    protected $signature = 'lamoda:GetProducts';
+    protected $signature = 'lamoda:GetProductStocks';
 
     /**
      * The console command description.
@@ -40,7 +40,7 @@ class lamodaGetProduct extends Command
     {
         $lamoda = new Lamoda();
         $products = $lamoda->getProductStocks();
-        var_export($products);
+        dd($products);
 
         return 'success';
     }
