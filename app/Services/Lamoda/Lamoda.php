@@ -4,6 +4,8 @@
 namespace App\Services\Lamoda;
 
 
+use App\Services\RequestHelper;
+
 class Lamoda extends LamodaServiceRequest
 {
 
@@ -22,4 +24,17 @@ class Lamoda extends LamodaServiceRequest
     {
         return $this->sendRequest('GetProductStocks', 'GET');
     }
+
+
+    /**php
+     * @action ProductStockUpdate
+     * @method POST
+     */
+    public function productStockUpdate($body = null)
+    {
+        $this->sendRequest('ProductStockUpdate', 'POST', $body);
+    }
+
+
+
 }

@@ -2,24 +2,24 @@
 
 namespace App\Console\Commands;
 
-use App\Services\Lamoda\Lamoda;
+use App\Schedules\MyskladStockUpdate;
 use Illuminate\Console\Command;
 
-class lamodaGetProduct extends Command
+class MyskladUpdate extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'lamoda:GetProductStocks';
+    protected $signature = 'mysklad:update';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Get all available products from Lamoda';
+    protected $description = 'Update Mysklad orders from Lamoda';
 
     /**
      * Create a new command instance.
@@ -32,16 +32,11 @@ class lamodaGetProduct extends Command
     }
 
     /**
-     * Execute the console command.
-     *
-     * @return int
+     * Execute the console command
      */
     public function handle()
     {
-        $lamoda = new Lamoda();
-        $products = $lamoda->getProductStocks();
-        dd($products);
-
-        return 'success';
+        $call = new MyskladStockUpdate();
+        $call();
     }
 }

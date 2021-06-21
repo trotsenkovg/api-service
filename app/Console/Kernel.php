@@ -2,7 +2,9 @@
 
 namespace App\Console;
 
-use App\Console\Commands\lamodaGetProduct;
+use App\Console\Commands\LamodaUpdate;
+use App\Schedules\LamodaStockUpdate;
+use App\Schedules\MyskladStockUpdate;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -14,7 +16,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        lamodaGetProduct::class
+        LamodaUpdate::class
     ];
 
     /**
@@ -25,7 +27,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->call(new LamodaStockUpdate())
+            ->description('Update Lamoda items from Mysklad')
+            ->everySixHours();
+
+        /*$schedule->call(new MyskladStockUpdate())
+            ->description('Update Mysklad orders from Lamoda')
+            ->everySixHours();*/
     }
 
     /**
